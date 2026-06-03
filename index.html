@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>🎀 재이의 백일잔치에 초대합니다</title>
+  <meta property="og:title" content="🎀 재이의 백일잔치" />
+  <meta property="og:description" content="소중한 분들을 초대합니다 💕" />
+
+  <!-- ✏️ 대표 이미지를 넣으려면 og:image 추가 -->
+  <meta property="og:image" content="https://grtonksj.github.io/jay-100/assets/cover.jpeg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== CSS 변수 ===== */
+    :root {
+      --pink-50: #fff0f4;
+      --pink-100: #ffe0ea;
+      --pink-200: #ffc2d4;
+      --pink-400: #f48fb1;
+      --pink-600: #d4607a;
+      --peach-50: #fff5ee;
+      --peach-100: #ffe8d5;
+      --mint-50: #f0faf7;
+      --mint-200: #b2e8d8;
+      --mint-600: #3a9e7f;
+      --yellow-50: #fffbea;
+      --yellow-200: #fde68a;
+      --text-primary: #3d2b2b;
+      --text-secondary: #7a5c5c;
+      --text-muted: #b08080;
+      --serif: 'Noto Serif KR', serif;
+      --sans: 'Noto Sans KR', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--pink-50);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== 공통 섹션 ===== */
+    .section {
+      padding: 2.5rem 1.5rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ===== 히어로 ===== */
+    .hero {
+      background: linear-gradient(160deg, var(--pink-100) 0%, var(--peach-50) 50%, var(--mint-50) 100%);
+      text-align: center;
+      padding: 3.5rem 1.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: var(--pink-200);
+      border-radius: 50%;
+      opacity: 0.3;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 150px; height: 150px;
+      background: var(--mint-200);
+      border-radius: 50%;
+      opacity: 0.3;
+    }
+
+    .hero-deco {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero-sub {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--pink-600);
+      line-height: 1.4;
+      margin-bottom: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-name {
+      display: block;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      font-family: var(--sans);
+      font-weight: 300;
+      margin-top: 0.3rem;
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 1.2rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-divider span {
+      display: inline-block;
+      width: 40px;
+      height: 1px;
+      background: var(--pink-400);
+      opacity: 0.6;
+    }
+
+    .hero-divider i { color: var(--pink-400); font-size: 0.8rem; }
+
+    .hero-date {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== 사진 슬라이드 ===== */
+    .photo-section {
+      background: white;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .slide-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      aspect-ratio: 4/3;
+      background: var(--pink-100);
+      cursor: pointer;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      background: var(--pink-100);
+    }
+
+    /* ✏️ 실제 사진을 넣으면 아래 주석 해제하고 .slide에 background-image 설정 */
+    /* .slide { flex: 0 0 100%; height: 100%; background-size: cover; background-position: center; } */
+
+    .slide:nth-child(2) { background: var(--peach-100); }
+    .slide:nth-child(3) { background: var(--mint-50); }
+    .slide:nth-child(4) { background: var(--yellow-50); }
+    .slide:nth-child(5) { background: var(--pink-50); }
+
+    .slide-nav {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+    }
+
+    .slide-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: white;
+      opacity: 0.5;
+      transition: all 0.3s;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .slide-dot.active {
+      opacity: 1;
+      width: 18px;
+      border-radius: 3px;
+      background: var(--pink-600);
+    }
+
+    /* ===== 인사말 ===== */
+    .greeting-section {
+      background: var(--peach-50);
+      text-align: center;
+    }
+
+    .greeting-text {
+      font-family: var(--serif);
+      font-size: 1rem;
+      line-height: 2;
+      color: var(--text-secondary);
+      white-space: pre-line;
+    }
+
+    .parent-names {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== 카운트다운 ===== */
+    .countdown-section {
+      background: white;
+      text-align: center;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 1.2rem;
+    }
+
+    .countdown-item {
+      background: var(--pink-50);
+      border-radius: 14px;
+      padding: 1rem 0.5rem;
+    }
+
+    .countdown-num {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--pink-600);
+      display: block;
+    }
+
+    .countdown-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      display: block;
+    }
+
+    .countdown-done {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--pink-600);
+      padding: 1rem 0;
+    }
+
+    /* ===== 일시/장소 ===== */
+    .info-section {
+      background: var(--pink-50);
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .info-icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .info-icon.pink { background: var(--pink-100); }
+    .info-icon.mint { background: var(--mint-50); }
+
+    .info-content h3 {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      margin-bottom: 0.3rem;
+    }
+
+    .info-content p {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    /* ===== 지도 버튼 ===== */
+    .map-section {
+      background: white;
+    }
+
+    .map-preview {
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      height: 200px;
+      background: var(--mint-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mint-600);
+      font-size: 2rem;
+      border: 1px solid var(--mint-200);
+    }
+
+    .map-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .map-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0.75rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .map-btn:active { opacity: 0.7; }
+
+    .map-btn.kakao {
+      background: #FEE500;
+      color: #3C1E1E;
+    }
+
+    .map-btn.naver {
+      background: #03C75A;
+      color: white;
+    }
+
+    /* ===== RSVP ===== */
+    .rsvp-section {
+      background: linear-gradient(160deg, var(--pink-100) 0%, var(--peach-100) 100%);
+      text-align: center;
+    }
+
+    .rsvp-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .rsvp-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .rsvp-btn {
+      display: inline-block;
+      background: var(--pink-600);
+      color: white;
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.2s, opacity 0.2s;
+      box-shadow: 0 4px 20px rgba(212, 96, 122, 0.35);
+    }
+
+    .rsvp-btn:active { transform: scale(0.97); opacity: 0.9; }
+
+    /* ===== 푸터 ===== */
+    .footer {
+      text-align: center;
+      padding: 2rem 1.5rem 3rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== 입장 애니메이션 ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ① 히어로 -->
+  <section class="hero">
+    <div class="hero-deco">🎀</div>
+    <p class="hero-sub">100 days celebration</p>
+    <h1 class="hero-title">
+      재이의<br>백일잔치에<br>초대합니다
+      <!-- ✏️ 아이 이름 -->
+      <span class="hero-name">재이의 백 번째 날</span>
+    </h1>
+    <div class="hero-divider">
+      <span></span>
+      <i>✦</i>
+      <span></span>
+    </div>
+    <p class="hero-date">
+      <!-- ✏️ 날짜/시간/장소 -->
+      2026년 8월 15일 토요일 오후 2시
+    </p>
+  </section>
+
+  <!-- ② 사진 슬라이드 -->
+  <section class="photo-section section fade-in">
+    <p class="section-label">✦ PHOTO GALLERY ✦</p>
+    <div class="slide-wrapper" id="slideWrapper">
+      <div class="slides" id="slides">
+        <!-- ✏️ 실제 사진으로 교체: <div class="slide" style="background-image:url('./assets/photo1.jpg'); background-size:cover;"></div> -->
+        <div class="slide" style="background-image:url('./assets/jay_100_1.jpeg'); background-size:cover; background-position: center 50%;
+"></div>
+        <div class="slide" style="background-image:url('./assets/jay_100_2.jpeg'); background-size:cover; background-position: center 20%;
+"></div>
+        <div class="slide" style="background-image:url('./assets/jay_100_3.jpeg'); background-size:cover; background-position: center 20%;
+"></div>
+        <div class="slide" style="background-image:url('./assets/jay_100_4.jpeg'); background-size:cover; background-position: center 20%;
+"></div>
+      </div>
+      <div class="slide-nav" id="slideNav"></div>
+    </div>
+  </section>
+
+  <!-- ③ 인사말 -->
+  <section class="greeting-section section fade-in">
+    <p class="section-label">✦ GREETING ✦</p>
+    <p class="greeting-text"><!-- ✏️ 인사말 수정 -->
+작고 소중한 아이가
+이 세상에 태어난 지
+벌써 백 일이 되었습니다.
+
+매일매일 새로운 모습으로
+자라주는 재이와 함께
+소중한 분들을 초대하고 싶어
+조심스레 자리를 마련했습니다.
+
+바쁘신 걸음 잠시 멈추시고
+함께해 주신다면 더없이 기쁘겠습니다.</p>
+    <p class="parent-names">
+      <!-- ✏️ 부모 이름 -->
+      아빠 김상준 · 엄마 이현진 드림
+    </p>
+  </section>
+
+  <!-- ④ 카운트다운 -->
+  <section class="countdown-section section fade-in">
+    <p class="section-label">✦ D-DAY ✦</p>
+    <div id="countdown"></div>
+  </section>
+
+  <!-- ⑤ 일시 & 장소 -->
+  <section class="info-section section fade-in">
+    <p class="section-label">✦ INFO ✦</p>
+
+    <div class="info-card">
+      <div class="info-icon pink">🗓️</div>
+      <div class="info-content">
+        <h3>DATE & TIME</h3>
+        <!-- ✏️ 날짜 -->
+        <p>2026년 8월 15일 토요일<br>오후 2시</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon mint">📍</div>
+      <div class="info-content">
+        <h3>LOCATION</h3>
+        <!-- ✏️ 장소 -->
+        <p>용인시 기흥구 강남로 9 태평양프라자 703호</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon pink">🚗</div>
+      <div class="info-content">
+        <h3>PARKING</h3>
+        <!-- ✏️ 주차 안내 -->
+        <p>추후 안내</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ 지도 -->
+  <section class="map-section section fade-in">
+    <p class="section-label">✦ MAP ✦</p>
+    <div class="map-buttons">
+      <!-- ✏️ 카카오맵 링크로 변경 -->
+      <a class="map-btn kakao"
+         href="https://place.map.kakao.com/26613068"
+         target="_blank" rel="noopener">
+        🟡 카카오맵
+      </a>
+      <!-- ✏️ 네이버 지도 링크로 변경 -->
+      <a class="map-btn naver"
+         href="https://naver.me/FQVcsFur"
+         target="_blank" rel="noopener">
+        🟢 네이버지도
+      </a>
+    </div>
+  </section>
+
+  <!-- ⑦ RSVP -->
+  <section class="rsvp-section section fade-in">
+    <h2 class="rsvp-title">참석 여부 알려주세요 💌</h2>
+    <p class="rsvp-desc">
+      준비에 도움이 될 수 있도록<br>
+      <!-- ✏️ 마감일 수정 -->
+      <strong>7월 31일(금)까지</strong> 참석 여부와<br>
+      차량 동반 여부를 알려주시면 감사하겠습니다.<br><br>
+      <span style="color: var(--text-muted); font-size: 0.8rem;">
+      🍽️ 별도 식사는 제공되지 않으며 간단한 다과와 케이터링이 준비되어 있습니다.<br><br>
+      💝 축의금은 정중히 사양합니다.<br>소중한 발걸음만으로도 충분합니다.
+  </span>
+    </p>
+    <!-- ✏️ 구글폼 / 네이버폼 링크로 교체 -->
+    <a class="rsvp-btn"
+       href="https://naver.me/5Au98YIn"
+       target="_blank" rel="noopener">
+      참석 여부 전달하기 →
+    </a>
+  </section>
+
+  <!-- ⑧ 푸터 -->
+  <footer class="footer">
+    <!-- ✏️ 연락처 -->
+    🎀 재이의 소중한 백일을 함께해 주셔서 감사합니다
+  </footer>
+
+  <script>
+    // ===== 슬라이드 =====
+    const slides = document.getElementById('slides');
+    const nav = document.getElementById('slideNav');
+    const slideCount = slides.children.length;
+    let current = 0, autoTimer;
+
+    for (let i = 0; i < slideCount; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `슬라이드 ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      nav.appendChild(dot);
+    }
+
+    function goTo(n) {
+      current = (n + slideCount) % slideCount;
+      slides.style.transform = `translateX(-${current * 100}%)`;
+      nav.querySelectorAll('.slide-dot').forEach((d, i) =>
+        d.classList.toggle('active', i === current));
+    }
+
+    function startAuto() {
+      autoTimer = setInterval(() => goTo(current + 1), 3500);
+    }
+
+    startAuto();
+    document.getElementById('slideWrapper').addEventListener('click', () => {
+      clearInterval(autoTimer);
+      goTo(current + 1);
+      startAuto();
+    });
+
+    // ===== 카운트다운 =====
+    // ✏️ 이벤트 날짜 수정
+    const EVENT = new Date('2026-08-15T14:00:00');
+
+    function renderCountdown() {
+      const el = document.getElementById('countdown');
+      const diff = EVENT - new Date();
+
+      if (diff <= 0) {
+        el.innerHTML = '<p class="countdown-done">🎉 오늘이 바로 그 날이에요!</p>';
+        return;
+      }
+
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      el.innerHTML = `
+        <div class="countdown-grid">
+          ${[['일', d], ['시간', h], ['분', m], ['초', s]].map(([label, val]) => `
+            <div class="countdown-item">
+              <span class="countdown-num">${String(val).padStart(2, '0')}</span>
+              <span class="countdown-label">${label}</span>
+            </div>`).join('')}
+        </div>`;
+    }
+
+    renderCountdown();
+    setInterval(renderCountdown, 1000);
+
+    // ===== 스크롤 페이드인 =====
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
